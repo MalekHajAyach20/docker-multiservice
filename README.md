@@ -20,6 +20,7 @@ L'application repose sur trois services principaux :
 - PostgreSQL 16
 - YAML
 - Linux (Ubuntu)
+- Trivy (scan de vulnérabilités)
 
 ## Ce que j'ai mis en place
 
@@ -112,8 +113,8 @@ Vérifier que la connexion utilise le bon compte Docker Hub : `malekayach123`.
 Associer les images locales aux dépôts Docker Hub :
 
 ```bash
-docker tag project-backend:latest malekayach123/project-backend:1.0.0
-docker tag project-frontend:latest malekayach123/project-frontend:1.0.0
+docker tag project-backend:latest malekayach123/project-backend:latest
+docker tag project-frontend:latest malekayach123/project-frontend:latest
 ```
 
 ### 3. Publier les images
@@ -121,8 +122,8 @@ docker tag project-frontend:latest malekayach123/project-frontend:1.0.0
 Envoyer les images vers Docker Hub :
 
 ```bash
-docker push malekayach123/project-backend:1.0.0
-docker push malekayach123/project-frontend:1.0.0
+docker push malekayach123/project-backend:latest
+docker push malekayach123/project-frontend:latest
 ```
 
 Si un push échoue avec une erreur d'autorisation, vérifier que le compte connecté est bien propriétaire des dépôts et que ceux-ci existent.
@@ -139,13 +140,34 @@ Après la réussite des commandes de publication, les dépôts sont accessibles 
 Sur une autre machine disposant de Docker, télécharger les images avec :
 
 ```bash
-docker pull malekayach123/project-backend:1.0.0
-docker pull malekayach123/project-frontend:1.0.0
+docker pull malekayach123/project-backend:latest
+docker pull malekayach123/project-frontend:latest
 ```
 
-Le tag `1.0.0` identifie une version précise des images publiées.
+Le tag `latest` désigne la dernière version publiée des images. Il change à chaque nouvelle publication : pour savoir précisément quelle version est utilisée, il est préférable de publier des versions numérotées (par exemple `1.0.0`).
 
 **Remarque :** la publication des images backend et frontend ne publie pas la base de données PostgreSQL. Celle-ci utilise l'image officielle `postgres:16-alpine`.
+
+## Analyse de sécurité des images (Trivy)
+
+J'ai analysé les images avec **Trivy**, un scanner de vulnérabilités, afin de repérer les failles connues qu'elles contiennent. Le scan a été réalisé le 27 octobre 2026 sur les images construites localement, en ne gardant que les failles de gravité **HIGH** et **CRITICAL**.
+
+### Résultats
+
+| Image | Failles HIGH/CRITICAL | Dont CRITICAL |
+|---|---|---|
+| Backend | 29 | 2 |
+| Frontend | 3 | 0 |
+
+
+### Pistes d'amélioration
+
+- Mettre à jour les paquets Alpine pendant la construction des images (`apk upgrade`).
+- Retirer npm de l'image finale du backend.
+- Mettre à jour `body-parser` et `proxy-addr`.
+- Rescanner les images, puis publier une nouvelle version numérotée.
+
+Les rapports complets, au format HTML, sont disponibles dans le dossier `reports/` du dépôt.
 
 ## Crédits
 
