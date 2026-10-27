@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      .group-header th {
+        font-size: 200%;
+      }
+      .sub-header th {
+        font-size: 150%;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        white-space: nowrap;
+        padding: .3em;
+      }
+      table {
+        margin: 0 auto;
+      }
+      .severity {
+        text-align: center;
+        font-weight: bold;
+        color: #fafafa;
+      }
+      .severity-LOW .severity { background-color: #5fbb31; }
+      .severity-MEDIUM .severity { background-color: #e9c600; }
+      .severity-HIGH .severity { background-color: #ff8800; }
+      .severity-CRITICAL .severity { background-color: #e40000; }
+      .severity-UNKNOWN .severity { background-color: #747474; }
+      .severity-LOW { background-color: #5fbb3160; }
+      .severity-MEDIUM { background-color: #e9c60060; }
+      .severity-HIGH { background-color: #ff880060; }
+      .severity-CRITICAL { background-color: #e4000060; }
+      .severity-UNKNOWN { background-color: #74747460; }
+      table tr td:first-of-type {
+        font-weight: bold;
+      }
+      .links a,
+      .links[data-more-links=on] a {
+        display: block;
+      }
+      .links[data-more-links=off] a:nth-of-type(1n+5) {
+        display: none;
+      }
+      a.toggle-more-links { cursor: pointer; }
+    </style>
+    <title>project-frontend:latest (alpine 3.24.3) - Trivy Report - 2026-10-27 07:50:10.851232783 +0100 CET m=+6.187539163 </title>
+    <script>
+      window.onload = function() {
+        document.querySelectorAll('td.links').forEach(function(linkCell) {
+          var links = [].concat.apply([], linkCell.querySelectorAll('a'));
+          [].sort.apply(links, function(a, b) {
+            return a.href > b.href ? 1 : -1;
+          });
+          links.forEach(function(link, idx) {
+            if (links.length > 3 && 3 === idx) {
+              var toggleLink = document.createElement('a');
+              toggleLink.innerText = "Toggle more links";
+              toggleLink.href = "#toggleMore";
+              toggleLink.setAttribute("class", "toggle-more-links");
+              linkCell.appendChild(toggleLink);
+            }
+            linkCell.appendChild(link);
+          });
+        });
+        document.querySelectorAll('a.toggle-more-links').forEach(function(toggleLink) {
+          toggleLink.onclick = function() {
+            var expanded = toggleLink.parentElement.getAttribute("data-more-links");
+            toggleLink.parentElement.setAttribute("data-more-links", "on" === expanded ? "off" : "on");
+            return false;
+          };
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>project-frontend:latest (alpine 3.24.3) - Trivy Report - 2026-10-27 07:50:10.851311051 +0100 CET m=+6.187617351</h1>
+    <table>
+      <tr class="group-header"><th colspan="6">alpine</th></tr>
+      <tr class="sub-header">
+        <th>Package</th>
+        <th>Vulnerability ID</th>
+        <th>Severity</th>
+        <th>Installed Version</th>
+        <th>Fixed Version</th>
+        <th>Links</th>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">brotli-libs</td>
+        <td>CVE-2026-111497</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">1.2.0-r1</td>
+        <td>1.2.1-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/23/25">http://www.openwall.com/lists/oss-security/2026/10/23/25</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/24/6">http://www.openwall.com/lists/oss-security/2026/10/24/6</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/26/12">http://www.openwall.com/lists/oss-security/2026/10/26/12</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/26/13">http://www.openwall.com/lists/oss-security/2026/10/26/13</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/26/16">http://www.openwall.com/lists/oss-security/2026/10/26/16</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2026-111497">https://access.redhat.com/security/cve/CVE-2026-111497</a>
+          <a href="https://advisory.echohq.com/cve/CVE-2026-111497">https://advisory.echohq.com/cve/CVE-2026-111497</a>
+          <a href="https://broccoli2shell.com">https://broccoli2shell.com</a>
+          <a href="https://github.com/advisories/GHSA-9v8h-qqgm-4m35">https://github.com/advisories/GHSA-9v8h-qqgm-4m35</a>
+          <a href="https://github.com/dotnet/announcements/issues/494">https://github.com/dotnet/announcements/issues/494</a>
+          <a href="https://github.com/google/brotli/releases/tag/v1.0.10">https://github.com/google/brotli/releases/tag/v1.0.10</a>
+          <a href="https://github.com/google/brotli/releases/tag/v1.1.1">https://github.com/google/brotli/releases/tag/v1.1.1</a>
+          <a href="https://github.com/google/brotli/releases/tag/v1.2.1">https://github.com/google/brotli/releases/tag/v1.2.1</a>
+          <a href="https://linux.oracle.com/cve/CVE-2026-111497.html">https://linux.oracle.com/cve/CVE-2026-111497.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2026-500514.html">https://linux.oracle.com/errata/ELSA-2026-500514.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2026/10/msg00049.html">https://lists.debian.org/debian-lts-announce/2026/10/msg00049.html</a>
+          <a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high">https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-111497">https://nvd.nist.gov/vuln/detail/CVE-2026-111497</a>
+          <a href="https://patchtheplanet.org/brotli">https://patchtheplanet.org/brotli</a>
+          <a href="https://ubuntu.com/security/notices/USN-8956-1">https://ubuntu.com/security/notices/USN-8956-1</a>
+          <a href="https://www.aikido.dev/blog/node2shell-nodejs-brotli-rce-cve-2026-111497">https://www.aikido.dev/blog/node2shell-nodejs-brotli-rce-cve-2026-111497</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2026-111497">https://www.cve.org/CVERecord?id=CVE-2026-111497</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">curl</td>
+        <td>CVE-2026-92392</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">8.22.0-r0</td>
+        <td>8.23.0-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/18/5">http://www.openwall.com/lists/oss-security/2026/10/18/5</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/18/6">http://www.openwall.com/lists/oss-security/2026/10/18/6</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2026-92392">https://access.redhat.com/security/cve/CVE-2026-92392</a>
+          <a href="https://curl.se/docs/CVE-2026-92392.html">https://curl.se/docs/CVE-2026-92392.html</a>
+          <a href="https://curl.se/docs/CVE-2026-92392.json">https://curl.se/docs/CVE-2026-92392.json</a>
+          <a href="https://hackerone.com/reports/4030333">https://hackerone.com/reports/4030333</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-92392">https://nvd.nist.gov/vuln/detail/CVE-2026-92392</a>
+          <a href="https://ubuntu.com/security/notices/USN-8927-1">https://ubuntu.com/security/notices/USN-8927-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-8927-2">https://ubuntu.com/security/notices/USN-8927-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2026-92392">https://www.cve.org/CVERecord?id=CVE-2026-92392</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcurl</td>
+        <td>CVE-2026-92392</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">8.22.0-r0</td>
+        <td>8.23.0-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/18/5">http://www.openwall.com/lists/oss-security/2026/10/18/5</a>
+          <a href="http://www.openwall.com/lists/oss-security/2026/10/18/6">http://www.openwall.com/lists/oss-security/2026/10/18/6</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2026-92392">https://access.redhat.com/security/cve/CVE-2026-92392</a>
+          <a href="https://curl.se/docs/CVE-2026-92392.html">https://curl.se/docs/CVE-2026-92392.html</a>
+          <a href="https://curl.se/docs/CVE-2026-92392.json">https://curl.se/docs/CVE-2026-92392.json</a>
+          <a href="https://hackerone.com/reports/4030333">https://hackerone.com/reports/4030333</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-92392">https://nvd.nist.gov/vuln/detail/CVE-2026-92392</a>
+          <a href="https://ubuntu.com/security/notices/USN-8927-1">https://ubuntu.com/security/notices/USN-8927-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-8927-2">https://ubuntu.com/security/notices/USN-8927-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2026-92392">https://www.cve.org/CVERecord?id=CVE-2026-92392</a>
+        </td>
+      </tr>
+      <tr><th colspan="6">No Misconfigurations found</th></tr>
+    </table>
+  </body>
+</html>
